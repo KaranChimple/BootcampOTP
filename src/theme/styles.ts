@@ -14,15 +14,22 @@ export const Colors = {
 
 export const Typography = {
     header: {
-        fontSize: 24,
+        fontSize: 46,
         fontWeight: 'bold' as 'bold',
         color: Colors.text,
         marginBottom: 8,
     },
     subheader: {
-        fontSize: 16,
+        fontSize: 20,
         color: Colors.subtext,
         marginBottom: 24,
+    },
+    email: {
+        fontSize: 16,
+        fontWeight: 'bold' as 'bold',
+        color: Colors.text,
+        textAlign: 'left' as const,
+        width: '100%' as const,
     },
     body: {
         fontSize: 14,

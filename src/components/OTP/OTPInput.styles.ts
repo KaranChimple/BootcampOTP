@@ -1,23 +1,21 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet, TextStyle, ViewStyle } from 'react-native';
 import { Colors } from '../../theme/styles';
+import { OTP_DISPLAY_THRESHOLD } from '../../constants';
 
-export const styles = StyleSheet.create({
+const staticStyles = StyleSheet.create({
     container: {
         flexDirection: 'row',
         justifyContent: 'space-between',
-        width: '80%',
+        width: '100%',
         alignSelf: 'center',
         marginBottom: 30,
     },
-    input: {
-        width: 60,
-        height: 60,
+    inputBase: {
         borderRadius: 12,
         borderWidth: 1,
         borderColor: Colors.border,
         backgroundColor: Colors.inputBackground,
         textAlign: 'center',
-        fontSize: 24,
         color: Colors.text,
         fontWeight: 'bold',
     },
@@ -35,3 +33,18 @@ export const styles = StyleSheet.create({
         backgroundColor: Colors.disabled,
     },
 });
+
+export const styles = {
+    ...staticStyles,
+    input: (length: number): TextStyle => {
+        const size = length > OTP_DISPLAY_THRESHOLD ? 45 : 60;
+        const fontSize = length > OTP_DISPLAY_THRESHOLD ? 20 : 24;
+
+        return {
+            ...staticStyles.inputBase,
+            width: size,
+            height: size,
+            fontSize: fontSize,
+        };
+    }
+};

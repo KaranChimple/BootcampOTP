@@ -1,53 +1,36 @@
-import React, { useRef, useState, useEffect } from 'react';
+import React from 'react';
 import {
   View,
   TextInput,
-  NativeSyntheticEvent,
-  TextInputKeyPressEventData,
 } from 'react-native';
 import { styles } from './OTPInput.styles';
+import { OTP_LENGTH } from '../../constants';
+import { useOTPInput } from '../../hooks/useOTPInput';
 
 interface OTPInputProps {
   length?: number;
+  code?: string;
   onCodeChanged: (code: string) => void;
   disabled?: boolean;
 }
 
 const OTPInput: React.FC<OTPInputProps> = ({
-  length = 4,
+  length = OTP_LENGTH,
+  code: externalCode,
   onCodeChanged,
   disabled = false,
 }) => {
-  const [code, setCode] = useState<string[]>(Array(length).fill(''));
-  const inputs = useRef<TextInput[]>([]);
-
-  const handleChangeText = (text: string, index: number) => {
-    const newCode = [...code];
-    newCode[index] = text;
-    setCode(newCode);
-    onCodeChanged(newCode.join(''));
-
-    if (text && index < length - 1) {
-      inputs.current[index + 1].focus();
-    }
-  };
-
-  const handleKeyPress = (
-    e: NativeSyntheticEvent<TextInputKeyPressEventData>,
-    index: number
-  ) => {
-    if (e.nativeEvent.key === 'Backspace') {
-      if (!code[index] && index > 0) {
-        inputs.current[index - 1].focus();
-      }
-    }
-  };
+  const {
+    code,
+    inputs,
+    handleChangeText,
+    handleKeyPress,
+  } = useOTPInput({
+    length,
+    externalCode,
+    onCodeChanged,
+  });
   
-  useEffect(() => {
-     onCodeChanged(code.join(''));
-  }, [code, onCodeChanged]);
-
-
   return (
     <View style={styles.container}>
       {code.map((digit, index) => (
@@ -59,7 +42,7 @@ const OTPInput: React.FC<OTPInputProps> = ({
             }
           }}
           style={[
-            styles.input,
+            styles.input(length),
             (digit || index === code.findIndex(c => c === '')) ? styles.inputActive : null,
              disabled && styles.disabled
           ]}
@@ -76,6 +59,5 @@ const OTPInput: React.FC<OTPInputProps> = ({
     </View>
   );
 };
-
 
 export default OTPInput;

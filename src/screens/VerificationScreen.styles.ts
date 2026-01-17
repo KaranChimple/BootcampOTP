@@ -8,7 +8,6 @@ export const styles = StyleSheet.create({
     },
     content: {
         paddingHorizontal: 20,
-        alignItems: 'center',
     },
     verifyButton: {
         backgroundColor: Colors.primary,
@@ -36,6 +35,7 @@ export const styles = StyleSheet.create({
         flexDirection: 'row',
         marginTop: 24,
         alignItems: 'center',
+        justifyContent: 'center',
     },
     resendText: {
         color: Colors.subtext,

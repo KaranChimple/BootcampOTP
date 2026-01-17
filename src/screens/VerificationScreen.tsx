@@ -15,6 +15,7 @@ import OTPInput from '../components/OTP/OTPInput';
 import { useOTPTimer } from '../hooks/useOTPTimer';
 import { Typography, GlobalStyles } from '../theme/styles';
 import { styles } from './VerificationScreen.styles';
+import { OTP_LENGTH } from '../constants';
 
 const VerificationScreen = () => {
   const [otpCode, setOtpCode] = useState('');
@@ -22,8 +23,8 @@ const VerificationScreen = () => {
   const { formattedTime, isActive, startTimer } = useOTPTimer();
 
   const handleVerify = async () => {
-    if (otpCode.length !== 4) {
-      Alert.alert('Invalid OTP', 'Please enter a 4-digit code.');
+    if (otpCode.length !== OTP_LENGTH) {
+      Alert.alert('Invalid OTP', `Please enter a ${OTP_LENGTH}-digit code.`);
       return;
     }
 
@@ -34,7 +35,13 @@ const VerificationScreen = () => {
     setTimeout(() => {
       setIsVerifying(false);
       console.log('OTP Verified Successfully!', otpCode);
-      Alert.alert('Success', `OTP ${otpCode} verified!`);
+      Alert.alert(
+        'Success', 
+        `OTP ${otpCode} verified!`,
+        [
+          { text: 'OK', onPress: () => setOtpCode('') }
+        ]
+      );
     }, 2000);
   };
 
@@ -54,13 +61,16 @@ const VerificationScreen = () => {
           style={styles.keyboardAvoid}
         >
           <View style={styles.content}>
-            <Text style={Typography.header}>Verification Code</Text>
+            <Text style={Typography.header}>OTP Verification</Text>
             <Text style={Typography.subheader}>
-              We have sent the verification code to your mobile number.
+              Enter the verification code we just sent you on
             </Text>
 
+            <Text style={[Typography.subheader, Typography.email]}>example@gmail.com</Text>
+
             <OTPInput 
-              length={4} 
+              length={OTP_LENGTH} 
+              code={otpCode}
               onCodeChanged={setOtpCode}
               disabled={isVerifying} 
             />
@@ -68,10 +78,10 @@ const VerificationScreen = () => {
             <TouchableOpacity
               style={[
                 styles.verifyButton,
-                (otpCode.length !== 4 || isVerifying) && styles.verifyButtonDisabled
+                (otpCode.length !== OTP_LENGTH || isVerifying) && styles.verifyButtonDisabled
               ]}
               onPress={handleVerify}
-              disabled={otpCode.length !== 4 || isVerifying}
+              disabled={otpCode.length !== OTP_LENGTH || isVerifying}
             >
               {isVerifying ? (
                 <ActivityIndicator color="#FFFFFF" />
