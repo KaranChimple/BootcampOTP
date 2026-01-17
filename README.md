@@ -1,97 +1,36 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+# Bootcamp to Creative Dock
 
-# Getting Started
+### Intro
 
-> **Note**: Make sure you have completed the [Set Up Your Environment](https://reactnative.dev/docs/set-up-your-environment) guide before proceeding.
+Hello, if you find yourself reading this, you might be already in process of hiring or found this by accident why browsing the internet. The goal of this repo is to challenge yourself a little bit. You might be asking why just a little bit, well let's not waste much of your time and even a little bit can be enough to assess your skills. 
 
-## Step 1: Start Metro
+This task is straightforward but you can let your creativity run wild with it, and by creativity I mean specifically code. The instructions are there to be followed but the code structure, practices and architecture are up to you.
 
-First, you will need to run **Metro**, the JavaScript build tool for React Native.
+We would like to see the best of you, so don't feel too shy to go a little extra with what you deliver, *DO NOT* let the simplicity of the task fool you. Your goal should be to deliver maintainable code, that would be reviewed by your colleagues and later used in a production environment. It will not, but play along. Also OTP screen is a thing often reused for validating payments or changing your passcode. So think about that as well.
 
-To start the Metro dev server, run the following command from the root of your React Native project:
+### Process
 
-```sh
-# Using npm
-npm start
+We aim to have this process as simple as possible, read the task assignment, create a fork and submit merge request and send us email (you can find my email on my gitlab profile). Afterwards we will review the process and let you know back.
 
-# OR using Yarn
-yarn start
-```
+### Hints
 
-## Step 2: Build and run your app
+As mentioned above, think of scale, reusability, and good practices, really make the best out of this, even if it should be just a practice for you and would not be something anyone would see otherwise.
 
-With Metro running, open a new terminal window/pane from the root of your React Native project, and use one of the following commands to build and run your Android or iOS app:
+Is AI bad? I don't think so, can it cause harm in this process? Sure, do not rely on GPT or other tools to get you a job. It should be the best of you, not the best of all the bad code that AI is trained on. If you need a helping hand to solve some styling or problem, sure let's leverage AI.
 
-### Android
+## Task
 
-```sh
-# Using npm
-npm run android
+### Technologies
+- typescript
+- react native
+- any lib you see fit except for OTP 
 
-# OR using Yarn
-yarn android
-```
+## Acceptance Criteria
 
-### iOS
+- OTP should be 4 digits long
+- Implement a “Verify” button that logs the full 4-digit OTP to the console and mock network delay
+- Resend button should be available only after 60 seconds have passed
+  - Time should be visible when the timer is running
+- Implement any other features that you see fit for this use case
 
-For iOS, remember to install CocoaPods dependencies (this only needs to be run on first clone or after updating native deps).
-
-The first time you create a new project, run the Ruby bundler to install CocoaPods itself:
-
-```sh
-bundle install
-```
-
-Then, and every time you update your native dependencies, run:
-
-```sh
-bundle exec pod install
-```
-
-For more information, please visit [CocoaPods Getting Started guide](https://guides.cocoapods.org/using/getting-started.html).
-
-```sh
-# Using npm
-npm run ios
-
-# OR using Yarn
-yarn ios
-```
-
-If everything is set up correctly, you should see your new app running in the Android Emulator, iOS Simulator, or your connected device.
-
-This is one way to run your app — you can also build it directly from Android Studio or Xcode.
-
-## Step 3: Modify your app
-
-Now that you have successfully run the app, let's make changes!
-
-Open `App.tsx` in your text editor of choice and make some changes. When you save, your app will automatically update and reflect these changes — this is powered by [Fast Refresh](https://reactnative.dev/docs/fast-refresh).
-
-When you want to forcefully reload, for example to reset the state of your app, you can perform a full reload:
-
-- **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Dev Menu**, accessed via <kbd>Ctrl</kbd> + <kbd>M</kbd> (Windows/Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (macOS).
-- **iOS**: Press <kbd>R</kbd> in iOS Simulator.
-
-## Congratulations! :tada:
-
-You've successfully run and modified your React Native App. :partying_face:
-
-### Now what?
-
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [docs](https://reactnative.dev/docs/getting-started).
-
-# Troubleshooting
-
-If you're having issues getting the above steps to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
-
-# Learn More
-
-To learn more about React Native, take a look at the following resources:
-
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+![Design](./otp-verification.png)
